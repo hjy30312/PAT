@@ -23,6 +23,7 @@ public class Main {
         }
         sc.close();
 
+        //“零多项式”的指数和系数都是0，但是表示为“0 0”。
         if (!flag) {
             System.out.print("0 0");
         }
