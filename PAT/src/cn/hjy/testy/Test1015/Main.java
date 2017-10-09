@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -46,19 +47,19 @@ public class Main {
                             setThree.size() + setFour.size());
         for (Student s:
                 setOne) {
-            System.out.printf("%08d %d %d %d\n", s.id, s.morality, s.talent);
+            System.out.printf("%08d %d %d\n", s.id, s.morality, s.talent);
         }
         for (Student s:
                 setTwo) {
-            System.out.printf("%08d %d %d %d\n", s.id, s.morality, s.talent);
+            System.out.printf("%08d %d %d\n", s.id, s.morality, s.talent);
         }
         for (Student s:
                 setThree) {
-            System.out.printf("%08d %d %d %d\n", s.id, s.morality, s.talent);
+            System.out.printf("%08d %d %d\n", s.id, s.morality, s.talent);
         }
         for (Student s:
                 setFour) {
-            System.out.printf("%08d %d %d %d\n", s.id, s.morality, s.talent);
+            System.out.printf("%08d %d %d\n", s.id, s.morality, s.talent);
         }
 
     }
@@ -84,11 +85,11 @@ class Student implements Comparable<Student> {
         this.talent = talent;
         this.score = talent + morality;
 
-        if (morality >= h && talent >= h) {
+        if (morality >= h && talent >= h) { //德分和才分均不低于此线的被定义为“才德全尽”
             classType = 1;
-        } else if (morality >= h && talent < h) {
+        } else if (morality >= h && talent < h) { //才分不到但德分到线
             classType = 2;
-        } else if (morality < h && talent > h) {
+        } else if (morality < h && talent < h && morality >= talent) { //德才分均低于H，但是德分不低于才分
             classType = 3;
         } else {
             classType = 4;
@@ -117,13 +118,12 @@ class Student implements Comparable<Student> {
             } else {
                 if (this.id > o.id) {
                     return 1;
-                } else if (this.id > o.id) {
+                } else if (this.id < o.id) {
                     return -1;
                 } else {
                     return 0;
                 }
             }
         }
-
     }
 }
